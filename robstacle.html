@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Robstacle Course | Edward Chu</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>HOME</strong></a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/edward-chu-engineer/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin">
+										<span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+								        <h1>Robstacle Course</h1>
+                                        <h2><i>Making Three Robots to Traverse an Obstacle Course Relay Race</i></h2>
+                                        <h3>Introduction</h3>
+                                        <p align="justify">This was a team project course at Caltech, course number ME72.</p>
+                                        <figure style="float:right;margin-left:20px">
+                                            <img src="images/mce.png" alt="Photo of the MCE logo." width=400px/><figcaption><i>ME72 is part of Caltech's Department of Mechanical and Civil Engineering. &copy;2021 California Institute of Technology.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">At Caltech, each class of mechanical engineering undergrads is required to participate in ME72, Engineering Design Laboratory. The exact premise of the course changes every year, but the overall concept always remains the same. From the course catalog, ME72 is "A project-based course in which teams of students design, fabricate, analyze, test, and operate an electromechanical device to compete against devices designed by other student teams. The class lectures and the projects stress the integration of mechanical design, sensing, engineering analysis, and computation to solve problems in engineering system design." In the year before mine, for example, students built small, remote-controlled watercraft that competed against each other in games of robotic water polo. For my year, the objective was changed - this time, students would work together to design and build three robots that would navigate an obstacle course, and would also exchange a baton between themselves, akin to a relay race.</p>
+                                        <p align="justify">By popular vote, the competition for my year was dubbed the "Robstacle Course". The competition's hurdles went as follows:</p>
+                                        <ol>
+                                            <li>The three robots are placed in their respective starting positions on the obstacle course. Robot 1 begins with the baton.</li>
+                                            <li>The competition heat starts. Robot 1 must autonomously navigate a pylon field and transfer the baton to Robot 2. If it is unable to do so, it must wait until the autonomous period is over to enter tele-operated mode, and complete its tasks.</li>
+                                            <li>Robot 2, with the baton, drives up, then down a seesaw/teeter-totter obstacle.</li>
+                                            <li>Robot 2 then drives up a steep (30&deg;) ramp, onto an elevated platform, where it may pick up a 1 kg weight.</li>
+                                            <li>Robot 2 transfers the baton to robot 3, which is at the bottom of the ramp descending from the elevated platform. Robot 2 is not required to go down this ramp.</li>
+                                            <li>Robot 3, with the baton, pulls two pins to open a gate.</li>
+                                            <li>Robot 3 drives through the open gate, up a shallow ramp, and deposits the baton in a receptacle to complete the race.</li>
+                                        </ol>
+                                        <figure>
+                                            <img src="images/robstacle_course.jpg" alt="Concept art of the obstacle course." width=900px/><figcaption><i>Concept art of the obstacle course, with the starting line at the bottom left corner. Visible are the pylon field, teeter-totters, elevated platform with its up and down ramps, and the end gates with receptacle.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">Each team was given a budget of $1300 to spend. Though this might seem like plenty at first glance, recall that all the robots were to be built from ground zero. Motors, gears, electronics, wheels, and raw materials all had to be purchased, or manufactured in-house. If something we purchased wasn't up to par, or some component broke, any repurchases also had to come out of this limited budget. Thus, all of the team's purchasing and budgeting was done very carefully and deliberately to make sure we did not run into any monetary issues down the line.</p>
+                                        <hr/>
+                                        <h3>Design Process</h3>
+                                        <p align="justify">The first order of business, of course, was to brainstorm ideas. Early on, we decided to use a unique strategy: rather than transfer the batons from one robot to another, robots 2 and 3 would simply transport the entirety of robot 1, which held the baton, until the goal was reached, at which point robot 1 would deposit the baton into the goal. We thought this would make the transfer process more robust and reduce the risk of failure. However, this meant robot 1 would have to be small and lightweight, so it could be transported by the other two robots.</p>
+                                        <figure style="float:right;margin-left:20px">
+                                            <img src="images/transmission_assembly.png" alt="CAD of transmission." width=300px/><figcaption><i>CAD assembly of the 9:1 gear ratio transmission, which was used for all three of our robots' powered wheels.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">There were three design philosophies we tried to incorporate as much as possible. They were designing for durability, designing for ease of modification and maintenance, and recycling designs as much as possible. Durability was important because of the limited time and budget. If our robots broke at all during assembly or testing, the money and time needed for repair and purchasing new components could be costly; in the worst case, the robots could even break on competition day. To this end, we decided to make the robots mostly out of aluminum, using other materials only occasionally. To improve ease of maintenance and modification, we emphasized modularity and the recycling of designs across the three robots. Components could be made separately, then attached with screws to the chassis for easy disassembly and adjustment. Designs were also copied between robots, especially between robots 2 and 3. For example, all three robots used the same transmission design for powered wheels, with the same wheels, gears, and motors. Furthermore, we tried to use as small a variety of screws as possible, greatly reducing the inconvenience of not only finding the right screws and screwdrivers but also tapping the threads themselves. These design decisions helped to reduce confusion and save time, which was perhaps the most constraining factor throughout the entire course.</p>
+                                        <p align="justify">After a preliminary design review (PDR), in which the course instructors approved our early drafts, our team began to finalize our robot designs. We used SolidWorks to model the robots, and GrabCAD to coordinate design efforts between members. From the models, we produced engineering drawings to use for machining the various parts. Each robot consisted of three primary systems: the mobility system, the electronics system, and manipulator systems, which are each explained in detail below. Our design process of these systems culminated with the critical design review (CDR), after which we began fabrication in earnest.</p>
+                                        <h4>Robot 1</h4>
+                                        <dl>
+                                            <dt>Requirements</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/pylons.jpg" alt="CAD of pylon field." width=500px/><figcaption><i>The pylon field. Center-to-center, they were 21" apart.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">The first robot starts with the baton before the race. The obstacles it had to contend with were a pylon field, essentially several rows of 8" diameter, 24" tall concrete-filled cylinders, and the transfer of the baton to the second robot. Furthermore, robot 1 was to operate autonomously, at least for a period of 40 seconds. After that, it was permitted for students to use remote control to assist robot 1 in completing its tasks.</p></dd>
+                                            <dt>Mobility</dt><dd><p align="justify">To navigate in the pylon field, robot 1 had to be agile, but did not require much torque. Therefore, the mobility system for robot 1 only used two powered wheels, while the other two wheels were idlers. Omniwheels were used for the idlers so the robot could turn in place, an ability essential to navigating the pylons.</p></dd>
+                                            <dt>Electronics</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/r1_electronics_schematic.png" alt="Schematic diagram of robot 1 electronics." width=500px/><figcaption><i>Robot 1's electronics schematic.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">All three robots' electronics systems were very similar, using Raspberry Pi Zeros as the microcontroller and connecting it to the breakout board, motor controllers, and other components. However, to accommodate the autonomous requirement, robot 1 had the addition of a webcam for the purpose of computer vision, which would allow robot 1 to determine its location in the pylon field. Furthermore, due to robot 1's small size and low weight requirement, we used only one electronics box to house both the circuits and batteries, made out of medium density fiberboard (MDF) instead of aluminum.</p></dd>
+                                            <dt>Manipulator</dt><dd><p align="justify">Robot 1, besides for the mobility and electronics systems, required one more system for the baton. Our method was transporting the entirety of robot 1, so the system had to be able to reliably retain the baton for the entirety of the race, and also be able to deposit it in a receptacle at the race's end. Since the baton is a baseball, so we decided to use a ring mechanism to hold the ball, and simply flipped the ring with a servo to baton deposit.</p></dd>
+                                        </dl>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/r1_assembly.png" alt="Assembly CAD view of Robot 1." height=260px/><figcaption><i>Several CAD views of robot 1. It is missing its electronics box in this model. The various components like the manipulator, transmissions, motor holders, etc. were attached with screws and bolts, using holes in the chassis.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r1_chassis.png" alt="CAD of robot 1's chassis." height=260px/><figcaption><i>Robot 1's chassis, with holes for screws and wires.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r1_manipulator.png" alt="CAD of Robot 1's ring manipulator." height=260px/><figcaption><i>Robot 1's ring mechanism for holding and depositing the baton.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <h4>Robot 2</h4>
+                                        <dl>
+                                            <dt>Requirements</dt>
+                                            <figure style="float:right;margin-left:20px;clear:left">
+                                                <img src="images/seesaws.png" alt="Concept art of seesaws." width=500px/><figcaption><i>The two seesaw obstacles, one for each competing robot.</i></figcaption>
+                                            </figure>
+                                            <figure style="float:right;margin-left:20px;clear:right">
+                                                <img src="images/ramp_ascending.png" alt="Photo of ramp." width=500px/><figcaption><i>The ascending ramp, with skateboard grip tape.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">Following robot 1's navigation of the pylon field, robot 2 receives the baton from robot 1 in a 8'x12' flat open area. After that, it must first contend with a seesaw, or teeter-totter, obstacle. The seesaw is 24" wide and 11.5' long, covered with skateboard deck tape to improve traction. The friction at the pivot point was also quite low, so the whole board would swing quite violently once a weight imbalance was incurred by the robot's movement. This is one reason why we emphasized robot durability in our design phase, since hard bouncing was unavoidable.</p>
+                                            <p align="justify">The next obstacle for robot 2 was a 30&deg; inclined ramp leading to an elevated platform 4' above ground level, with dimensions 8'x8'. Again, the ramp was covered in skateboard grip tape to improve traction. On the elevated platform were a series of four 1-kg steel weights, which robot 2 could pick up for additional competition points. Then, robot 2 had to transfer the baton to robot 3 using another 30&deg; ramp, descending from the other side of the platform. Robot 2, however, was not actually required to traverse this ramp.</p></dd>
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/weights_on_platform.png" alt="The 1-kg weights on the platform." height=290px/><figcaption><i>1-kg weights on the elevated platform, which were lined up next to the divider.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/weights.png" alt="CAD of weights." height=290px/><figcaption><i>CAD of the 1-kg weights. The rectangular section is 5" tall.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <dt>Mobility</dt><dd>
+                                            <p align="justify">The mobility requirements for robot 2 were much more difficult to meet, compared to robot 1's. Not only did robot 2 have to traverse multiple inclines, but it also had to do so while transporting robot 1 - not an easy task in any measure. To provide sufficient torque, all four of robot 2's wheels were powered by their own motor and transmission system.</p>
+                                            </dd>
+                                            <dt>Electronics</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/r2_electronics_schematic.png" alt="Schematic diagram of robot 2 electronics." width=500px/><figcaption><i>Robot 2's electronics schematic.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">As explained earlier, all the robots shared many design elements to save time and reduce complexity. This was especially true for the electronics systems - robot 2's was quite similar to robot 1's. In comparison, robot 2 had two additional motor controllers, less one webcam, and different programming of and connections from the Raspberry Pi Zero. However, the robot 2 instead had two electronics boxes, one for circuits and one for batteries, and both were made of aluminum.</p></dd>
+                                            <dt>Manipulators</dt><dd><p align="justify">Robot 2 needed a system to help with transporting robot 1, and another system to pick up the 1-kg weights after ascending the ramp. To keep robot 1 in the robot 2's holding bay while traversing the difficult obstacles, we decided to use a powered ramp. The end of the ramp was connected to a continuous rotation servo with fishing line. To raise and lower the ramp, we could simply turn the servo a set amount, much like a drawbridge. To pick up the 1-kg weights, after much consideration of different methods like a scooper arm or a forklift-like mechanism, we went with using several rare earth permanent magnets. Simply driving up to the weights was enough to magnetically capture them.</p></dd>
+                                        </dl>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/r2_assembly.png" alt="Assembly CAD view of Robot 2." height=230px/><figcaption><i>Several CAD views of robot 2 - isometric, front, and bottom. The electronics boxes are mounted on the sides.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r2_chassis.png" alt="CAD of robot 2's chassis." height=230px/><figcaption><i>Robot 2's chassis.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r2_manipulators.png" alt="CAD of Robot 2's magnets." height=230px/><figcaption><i>Robot 2's magnets.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <h4>Robot 3</h4>
+                                        <dl>
+                                            <dt>Requirements</dt>
+                                            <dd><p align="justify">The next step is for robot 3 is to receive the baton from robot 2. Since robot 2 is not required to go down the descending ramp, our strategy was for robot 1 to exit robot 2's holding area, and drive down this ramp onto robot 3. Normally, two angled wooden guides sit in the middle of the descending ramp, to facilitate baton transfer for teams that wish to roll the baton from robot 2 to 3. Thankfully, these guides were removable beforehand, as our strategy was quite different from this.</p><p align="justify">Robot 3 then opens a gate by pulling two pins out of their sockets, and goes through the gate into an open area. During this stage, the competing teams' robots are allowed to make physical contact and attempts to interfere with the other team. This was yet another driver for our design philosophy of durability. After this open area, robot 3 is to drive up a shallow, &#60;10&deg; ramp to finally arrive at a flat platform. The platform has a hole in the middle, where the baton is deposited.</p></dd>
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/ramp_descending.png" alt="Photo of the descending ramp." height=300px/><figcaption><i>The ramp descending from the elevated platform, with the removable wooden guides.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/gates.jpg" alt="Image of gates with pins." height=300px/><figcaption><i>The gates, each with two pins. The pins consist of eye bolts with their threads stripped.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/end_ramp_topview.jpg" alt="" height=250px/><figcaption><i>A top view of the end ramp, with the receptacle hole.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/end_ramp.jpg" alt="" height=250px/><figcaption><i>Side view of the end ramp. Its slope is much shallower than the other ramp's.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <dt>Mobility</dt><dd><p align="justify">As mentioned previously, robot 3 is extremely similar to robot 2. In the case of the mobility system, they robot 2's and 3's were nearly identical. Four motors were used, each powering its own wheel and transmission.</p></dd>
+                                            <dt>Electronics</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/r3_electronics_schematic.png" alt="Schematic diagram of robot 3 electronics." width=500px/><figcaption><i>Robot 3's electronics schematic.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">Robot 3's electronics were also very similar to robot 2's. The scheme of using two electronics boxes for containing the circuits and batteries separately was also used. Only a few changes were made to accomodate the different manipulators.</p></dd>
+                                            <dt>Manipulator</dt><dd><p align="justify">The main differences between robots 2 and 3 were in the manipulator systems. Since robot 3 did not have to ascend any steep inclines, it lacked the powered ramp; robot 1 could stay in the holding area simply by locking its wheels. To pull the two pins holding the gate closed, we again decided to use magnets to grab the pins. However, since the pins were further apart than the width of the gate, two servos were necessary so the magnets could be extended and retracted. Finally, a hole was made in the chassis so robot 1 could deposit the baton without disembarking from robot 3.</p></dd>
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/r3_assembly.png" alt="CAD of robot 3." height=220px/><figcaption><i>CAD views of robot 3 - isometric, top, and front.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/r3_chassis.png" alt="CAD of robot 3 chassis." height=220px/><figcaption><i>Robot 3's chassis.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/r3_manipulators.png" alt="CAD of robot 3 manipulators." height=220px/><figcaption><i>Robot 3's manipulators and baton chute.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                        </dl>
+                                        <hr/>
+                                        <h3>Fabrication</h3>
+                                        <dl>
+                                            <dt>Chassis</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/waterjet_layout.png" alt="Schematic layout of waterjet paths."/><figcaption><i>The many components we waterjet cut from the 0.19" aluminum plate.</i></figcaption>
+                                            </figure><dd><p align="justify">All the robots' chassis were cut out of 0.19" aluminum plate, using a waterjet cutting machine. Recall aluminum was the main material of choice for our robots due to our emphasis on durability. Aluminum is also lightweight and machinable, when compared to steel. The chassis contained various holes and slots, used for attaching components like motors and manipulators, and for routing wires from the circuits to those components.</p></dd>
+                                            <figure style="float:left;margin-right:20px">
+                                                <img src="images/r1_electronics.png" alt="Photo of robot 1's electronics in the MDF box." width=300px/><figcaption><i>Robot 1's circuits and batteries in the MDF electronics box.</i></figcaption>
+                                            </figure>
+                                            <dt>Electronics</dt>
+                                            <dd><p align="justify">Our robots had two main electronics components - the batteries, and the circuits. The circuits consisted of Raspberry Pi Zeros for microcontrollers, universal battery eliminator circuits (UBEC) to step down voltage for servos, motor controllers, and capacitors. We used lithium polymer (LiPo) batteries to power the motors, and 5V phone recharging batteries for the circuits. Connections were made with a soldering iron.</p></dd>
+                                            <dt>Electronics Boxes</dt>
+                                            <figure style="float:right;margin-left:20px">
+                                                <img src="images/r2_electronics.png" alt="Photo of robot 2's electronics."/><figcaption><i>Robot 2's circuits in one of the aluminum electronics boxes.</i></figcaption>
+                                            </figure>
+                                            <dd><p align="justify">All of these electronics components were stored in electronics boxes. Robot 1, due to its need to be lightweight, had only one electronics box made of medium density fiberboard, MDF. This box was cut from stock MDF with a laser cutter and mounted directly on the top of the chassis. For robots 2 and 3, batteries and circuits were stored separately, in two electronics boxes waterjetted from 0.19" aluminum plate. These were mounted on the sides of the chassis, to make room for robot 1 in the middle.</p></dd>
+                                            <dt>Ramps</dt><dd><p align="justify">Robots 2 and 3 had ramps for robot 1 to drive on, to dock in the holding area. Like the chassis and metal electronics boxes, the ramps were waterjetted out of 0.19" aluminum plate. To increase traction, they were also covered with duct tape, facilitating robot 1's docking procedure. Recall that robot 2's ramp was powered and could raise and lower, to keep robot 1 inside the holding area while traversing the difficult obstacles. Robot 3 did not have this capability, as its obstacles were not nearly as challenging.</p></dd>
+                                            <dt>Gears</dt>
+                                            <dd><p align="justify">We decided to make our own gears for our transmissions, due to the high cost of purchasing them. The large gears of the transmission were first waterjetted with 2 through holes for screws, and the center hole was made with a lathe. Finally, the two screw holes were tapped for 4-40. The small gears were waterjetted out of 0.5" aluminum, with a D-shape keyseat in the center to keep the gear from spinning relative to the motor shaft.</p></dd>
+                                            <dt>Hubs, Wheels, Wheel Adjusters</dt>
+                                            <dd><p align="justify">Hubs were attached to our large gears to increase stability and robustness. 1" aluminum stock was cut to a thickness of about 0.3", and three tapped holes for screwing onto the gear were made using a manual mill. A center hole for the axle was made using a lathe with a 5/16" drill bit. We also used wheel adjusters to keep our wheels aligned during operation. They were waterjetted out of 0.125" aluminum plate. We ordered RC car wheels online to use for our robots' powered wheels, as they had very good traction.</p></dd>
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/d_key.png" alt="CAD of D keyseat on gear." height=300px/><figcaption><i>The D-shape keyseat of the small gear.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/waterjetted_gears.png" alt="Photo of gears." height=300px/><figcaption><i>Some of the gears we made ourselves out of aluminum.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/wheel_adjusters.png" alt="Photo of wheel adjuster." height=300px/><figcaption><i>RC car wheel and wheel adjuster.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <dt>Shafts &amp; Axles</dt><dd><p align="justify">The motor shafts and axles were made out of 5/16" steel rods. Steel was used due to its high strength - any breakage of the shaft would be catastrophic, and our robots were rather heavy due to being constructed out of aluminum. A vice setup was used to hold the rod, and the shafts were end-milled in order to have the D-shape key profile, so it could fit tightly into the small gear's keyseat.</p></dd>
+                                            <figure style="float:left;margin-right:20px">
+                                                <img src="images/axle_holders.png" alt="Photo of axle holders." width=400px/><figcaption><i>Our many axle holders, mass-produced with CNC.</i></figcaption>
+                                            </figure>
+                                            <dt>Other Mobility System Parts</dt><dd><p align="justify">The mobility system also had many motor mounts and axle holders, which were attached to the chassis using screws and bolts. The general shape for these holders were waterjetted out of 0.33" aluminum. Then, they were faced, and the needed holes were drilled and tapped. We used a CNC machine to greatly speed up the process. Oilite bushings were used as a low-friction, low-cost bearing for the axles to rotate in, as opposed to the much more expensive ball bearings.</p></dd>
+                                            <dt>Miscellaneous Parts</dt><dd><p align="justify">Several miscellaneous parts of our robots were made using 3D printers. We used both white Delrin acetal plastic and ABS plastic filaments to print these parts, such as some manipulator parts and the camera holder on robot 1.</p></dd>
+                                        </dl>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/r1_manipulator_baseball.jpg" alt="Photo of robot 1 manipulator." height=350px/><figcaption><i>A completed robot 1, holding the baton baseball.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r2_completed.png" alt="Photo of a completed robot 2." height=350px/><figcaption><i>A completed robot 2, with its ramp raised.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/r3_completed.png" alt="Photo of a completed robot 3." height=350px/><figcaption><i>A completed robot 3, with its pin-pulling manipulators retracted.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <hr/>
+                                        <h3>Testing &amp; Improvements</h3>
+                                        <p align="justify">After fabrication of each robot, we conducted initial testing on a flat wooden and concrete surfaces, much like the surfaces that were present in the obstacle course. The purpose of this test was simply to make sure the robot could move according to the input given to the remote control. There were several things we immediately noticed. First, although our robots were sufficiently maneuverable, they were jittery when accelerating, decelerating, and turning. This was fixed by rewriting and optimizing the controlling code. Second, the increased weight due to the majority aluminum build limited the robots' speed, but did give the desired result of sturdiness. Third, the robots could also carry a lot of weight and still move; this was a vital requirement that was demonstrably met with this test. And finally, it seemed that our transmission needed constant oiling to keep it running smoothly, which could be a major disadvantage if maintenance was needed in the middle of a race. To reduce this maintenance need, we wore down and work hardened our transmission gears by running them continuously for a long time, so they meshed together better. More gears could always be quickly and cheaply made with the waterjet machine if this process introduced any defects. Overall, the initial testing was a success, and we also identified several problems and fixed them.</p>
+                                        <p align="justify">The next major test was the mobility demo, in which teams were given the opportunity to test their robots against the obstacles themselves. The biggest obstacle to test for was the 30&deg; ramp. We found that robot 2 was able to ascend the ramp, albeit with great effort and the need to build up speed beforehand. Tackling the many obstacles, however, caused various problems to manifest. The small gears of our transmissions fell off several times. Hardware and programming issues also caused problems when moving at low speeds, and prevented fine control of the motors. Low speeds also caused the friction in the gears to become greater than the motor torque, sometimes preventing movement at all. The weight distribution of the robots was suboptimal, and robot 2 was unable to ascend the ramp while carrying robot 1, which bounced around intensely in the holding area during ascension attempts. Wires loosened periodically. We also had many problems with the wheels, such as slippage, wheels not all being in contact with the ground/obstacle, and nonexistent shock absorption. Note that at this time, we were still using cheap plastic wheels for our robots, which had much less traction than the RC wheels that were still shipping to us.</p>
+                                        <p align="justify">To fix these problems, we introduced additional hardware for the small gear, using pins to secure it to the motor shaft and also using Loctite super glue for extra robustness. All the wire connections were resoldered, and some new electronics hardware was ordered to improve the precision of motor control. Various aluminum parts were trimmed, and weights added, to achieve a more equal mass distribution. As for the wheel problems, most of them were solved when the RC wheels were finally shipped and replaced the interim plastic wheels. Finally, we came up with a new technique of moving robot 1 up robot 2 and 3's ramps backwards, which was not only easier for robot 1 to do with its rear-wheel drive but also resulted in better weight distribution.</p>
+                                        <p align="justify">The next test was the functionality test, which was intended to verify the performance of the robots' manipulators. In our case, robot 2 was able to pick up the 1-kg weights, robot 1 was able to deposit the baton in the receptacle, and robot 3 was able to open the end gate. This test was very successful for us; the only problems we noticed were that the baton would sometimes bounce out of the holder on robot 1, and the fishing line connecting the servo to the ramp on robot 2 broke. To prevent this from happening in the future, we added bars on top of the ball holder, and chamfered the edges of the hole the fishing line was tied to to eliminate sharp edges the line broke on.</p>
+                                        <p align="justify">The final test was a mock competition, where teams ran the entire course's obstacles to test everything together. Once again, various problems arose, and the team put in effort to fix each one. Hours before the mock competition, the Raspberry Pi Zero of robot 1 broke and wouldn't function at all. To test robot 2 and 3's ability to transport robot 1, we had to tape robot 1 in the respective holding areas. In addition, several gears and hubs failed and had to be remade. At this point though, they had already gone through quite a bit of testing, so we had learned their durability would be sufficient for competition day. During the trial, robot 2, carrying robot 1 on the seesaw, also flipped over due to the seesaw's sudden movement. Luckily, our robots did not suffer any damage. We learned to drive robot 2 more slowly at the fulcrum to prevent this in the future. Lastly, more software tweaking was done so that the Raspberry Pi Zeros would not have to be reset after every race, a time-consuming procedure that required a computer to be connected to the robot.</p>
+                                        <hr/>
+                                        <h3>Competition Day &amp; Closing Thoughts</h3>
+                                        <p align="justify">Finally, after nearly six months of work, competition day had arrived. There were five teams in total. The first part of the competition was a round robin, in which every team would compete against every other team at once, for a total of 10 matches. The second part was a single elimination bracket, where seeding was determined by the round robin results.</p>
+                                        <p align="justify"> During the competition, our robots performed quite well. All robots were able to actuate their manipulators, and were able to move smoothly on the flat sections. None of our transmissions failed, and demonstrated excellent performance in climbing the ramp and seesaw obstacles. Although the spokes of one wheel on robot 1 broke in our first run, we were able to replace it with spares we had purchased. However, we elected not to use robot 1's autonomous function, and ran down the clock instead to use teleoperation after the autonomous period. This was because we felt the risk of the autonomy algorithm failing and causing robot 1 to lose the baton was too great - losing the baton meant that our match was automatically over. In the end, we were one of only two teams able to complete the course in its entirety by depositing the baton at the goal at least once.</p>
+                                        <p align="justify">There were several things we could have improved upon, in hindsight. First, we overemphasized durability. Making our robots almost entirely out of aluminum did lend it the ability to survive harsh impacts, but the greatly increased weight made maneuverability difficult, and aluminum is rather expensive. Furthermore, the weight puts increased strain on purchased parts such as the RC wheels, which were perhaps not designed to carry so much weight and thus broke. Also, encoders to track wheel movement, and more powerful processors (Raspberry Pi Zeros are incredibly slow) would have significantly improved hardware performance. More testing could have been extremely useful for catching these design flaws and oversights. Looking back at our work, however, we considered the competition a success for us, as we scored reasonably well and were actually able to finish a race. And although the course has gained an infamous reputation for being an enormous time sink for mechanical engineering students, it remains an essential aspect of the Caltech mechanical engineering undergraduate experience.</p>
+									</div>
+								</section>
+						</div>
+                        
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li>
+											<span class="opener">Projects</span>
+											<ul>
+                                                <li><a href="aarest.html">AAReST Cubesat</a></li>
+                                                <li><a href="powersupply.html">Bench Power Supply</a></li>
+												<li><a href="hthx.html">High Temperature Heat Exchanger</a></li>
+                                                <li><a href="robstacle.html"><b>Robstacle Course</b></a></li>
+                                                
+											</ul>
+										</li>
+                                        <li>
+                                            <span class="opener">Internships</span>
+                                            <ul>
+                                                <li><a href="butterfly.html">Butterfly Wing Photonics</a></li>
+                                                <li><a href="twins.html">Magnesium Crystal Twins</a></li>
+                                                <li><a href="hiperco.html">Mechanical Properties of Hiperco</a></li>
+                                            </ul>
+                                        </li>
+										<li><a href="about.html">About Me</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h3>Contact</h3>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:edward.chu.1618@gmail.com">edward.chu.1618@gmail.com</a></li>
+										<li class="icon solid fa-phone">(626) 383-7537</li>
+                                        <li class="icon solid fa-home">California, USA</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-angle-double-up">Back to Top</a></li>
+                                    </ul>
+									<p class="copyright"> Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.<br>Last updated February 25, 2021.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

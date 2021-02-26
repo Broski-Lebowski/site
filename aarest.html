@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AAReST | Edward Chu</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>HOME</strong></a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/edward-chu-engineer/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin">
+										<span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+								        <h1>AAReST Cubesat</h1>
+                                        <h2><i>Optimizing Satellite Antenna Performance</i></h2>
+                                        <figure>
+                                            <img src="images/aarest.png" alt="Concept image of the AAReST spacecraft." width=900px><figcaption><i>An artist's depiction of the AAReST spacecraft. Image from <a href="http://www.pellegrino.caltech.edu/aarest1" target="_blank" rel="noopener noreferrer">http://www.pellegrino.caltech.edu/aarest1</a>.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">In recent decades, there has been a desire for larger and larger apertures on space telescopes. This makes in-flight assembly a necessity due to the sizing constraints imposed by modern launch vehicles. AAReST, Autonomous Assembly of a Reconfigurable Space Telescope, is a spacecraft based on CubeSat technologies that is to be designed, manufactured, and launched via a collaboration between the California Institute of Technology, the University of Surrey, and the Indian Institute of Space Science and Technology. Although AAReST is a small satellite, measuring only about half a meter on each axis while stowed, it is intended to be a proof of concept for the in-flight assembly of possible future space telescopes with large apertures. It accomplishes this by having three modules that are all able to navigate independently.</p>
+                                        <figure>
+                                            <img src="images/aarest_assembly.png" alt="Screenshot of a CAD of AAReST." width=900px><figcaption><i>A SolidWorks assembly isometric view of the AAReST spacecraft in the "wide configuration", with important components labeled. Note that this version is out of date; however, the overall design and look is unchanged.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">For my aerospace engineering minor, I enrolled in Caltech's Ae 105 course in my senior year. In the course's latter half, students are given the opportunity to work directly with the development of AAReST; I chose to work on the telecom team. Prior telecom teams had already come up with the antenna design, as well as selected the radio frequencies AAReST would use. However, the antenna design had not yet been verified experimentally. Thus, my team's goal was to test the antennas, not only making sure that they worked but also that they output a signal strong enough to be picked up by ground stations. To meet this goal, we completed these tasks in order:</p>
+                                        <ol>
+                                            <li>Study the sensitivity of antenna performance to spacecraft components</li>
+                                            <li>Fabricate an electromagnetic model of the spacecraft</li>
+                                            <li>Fabricate the antennas and integrate them with the EM model</li>
+                                            <li>Perform the antenna characterization experiment</li>
+                                        </ol>
+                                        <p align="justify">In RF theory, an ideal antenna is one that is connected to an infinitely large, perfectly conducting ground plane. For satellite antennas, however, the spacecraft itself acts as the ground plane - and it is neither infinitely large nor perfectly conducting. Therefore, experimentation is necessary to characterize the antennas' behavior in this nonideal scenario. Since we could not use actual flight hardware for our experiments, we first needed to fabricate a model of AAReST to use. Because the model only had to be accurate in its electromagnetic field behavior, and not in its physical representation, a faithful replica was not necessary. It was likely that some components of the satellite could be omitted from the model with little to no effect on its EM profile.</p>
+                                        <figure>
+                                            <img src="images/cst_config.png" alt="Three screenshots of the CST software."/><figcaption><i>Three examples of different configurations tested in the CST software, with the VHF antenna attached. From left to right: the original configuration, the missing camera configuration, and the missing MirrorSats configuration.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">To determine which components could be omitted from the model, we carried out several simulations in CST Studio Suite. By first simulating the original, unchanged configuration, and then configurations with different components missing, we could determine if a component was unimportant if its absence did not alter the simulation result significantly. The simulation result we used was the so-called s<sub>11</sub> parameter, which describes the proportion of power delivered to the antenna that is reflected back into the spacecraft - the lower the value, the better the signal.</p>
+                                        <figure>
+                                            <img src="images/cst_result.png" alt="Two line graphs of results from the CST software."/><figcaption><i>A summary of the results of the CST Studio simulations, with  UHF on the left and VHF on the right. It is clear that the LVI and MirrorSats must be included in the model. However, the camera, boom, and thickness of the chassis is not as important, since the troughs of those configurations are at the same frequency as in the original.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">From the simulations, we learned that the camera and boom could be omitted from the model, and the panels could also be much thinner than in actuality, without significantly affecting the accuracy of the model's EM behavior. With this knowledge, I drafted the EM model in SolidWorks, exported the model to 2D DXF files, and used the university machine shop's waterjet cutter to make the panels. Then, I put broke the panels' sharp edges and put them together with masking tape, using expanded polystyrene foam to fill the interior and aluminum flashing to ensure electrical continuity.</p>    
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/em_model_solidworks.png" alt="Screenshot of a CAD of the EM model." height=650px/><figcaption><i>A SolidWorks isometric view of the EM model, greatly simplified from the original CAD assembly. Note that the camera and boom are absent. The LVI is also missing because a replica of it had already been manufactured. 2D DXF files were derived from this model to control the waterjet cutting machine.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/em_model_photo.jpg" alt="Photo of the EM model." height=650px/><figcaption><i>The EM model of the CoreSat with the LVI. The sheet metal used was 0.0625" thick 6061-T6 aluminum alloy, whereas AAReST's panels typically have a ≈0.2" thickness.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p align="justify">Our next task was to fabricate the antennas. They consisted of four components - the monopole antenna, a mechanical bracket, an antenna interface board, and the RF feed wire. The design also called for the antennas to be made out of measuring tape, which has several advantageous properties such as low cost, good electrical conductivity, and tape spring behavior for ease of deployment. After fabricating the antennas with epoxy and solder, they were integrated into the EM model. Since this was the first time the antennas were actually constructed, it took a good amount of trial and error to find a manufacturing process that gave satisfactory results. Nevertheless, once a successful process was found, it was documented for future telecom teams, and we could finally carry out the antenna experiments.</p>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/potted_antennas.JPG" alt="A photo of a fabricated antenna." height=700px/><figcaption><i>An antenna fabricated from measuring tape, potted in a bracket with epoxy and soldered to an interface board.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/antennas_in_model.jpg" alt="A photo of antennas integrated into an EM model panel." height=700px/><figcaption><i>Both the UHF and VHF antennas integrated into a panel from the CoreSat EM model.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p align="justify">Our antenna tests were carried out using a network analyzer, a device which measures the s<sub>11</sub> parameter, also known as the input port voltage reflection coefficient. Recall that the s<sub>11</sub> parameter essentially describes the proportion of power delivered to the antenna that is wasted by reflectance back to the radio. Typically, a value of less than -10 dB is considered acceptable. For the first part of our experiment, we had to verify the antennas worked at all. To do this, we calibrated the network analyzer with a known load, then connected the antennas directly to the network analyzer without the EM model present. Once we had verified the antennas were functioning properly, we could carry out the second and main part of the experiment, antenna characterization and tuning. For monopole antennas, the value of the s<sub>11</sub> parameter is dependent on the antenna length, with the minimum s<sub>11</sub> occurring at higher frequencies the shorter the antenna. Therefore, there should exist an optimum length for maximum power transmission. During antenna fabrication, the measuring tape antennas were cut to much longer lengths than the theoretical optimum lengths. This way, we could find the actual optimum by gradually lessening the length of the antenna, which we did simply by cutting the measuring tape in 0.25" increments, and measuring s<sub>11</sub> with the network analyzer after each cut.</p>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/network_analyzer.jpg" alt="Photo of a network analyzer." height=700px/><figcaption><i>The network analyzer we used. The network analyzer is connected to the antenna's interface board through the orange coax cable.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/network_analyzer_test.JPG" alt="Photo of the antennas being tested with the EM model." height=700px/><figcaption><i>The UHF antenna being tested with the EM model. The model sits on a pedestal made of PVC piping to isolate it from any metals or other conductors that may interfere with the test.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/VHF_AntennaTuning_TestResults.jpg" alt="A photo of a fabricated antenna." height=400px/><figcaption><i>Test results for the VHF antenna, with s<sub>11</sub> plotted against frequency. Each colored line represents a different antenna length tested, from violet being to longest, 24", to red being the shortest, 12.5". The theoretical optimum length was 20.2". Note that the antenna has two s<sub>11</sub> troughs, one of which is near the design frequency of 146 MHz, denoted by the vertical blue line.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/vhf42.jpg" alt="A photo of antennas integrated into an EM model panel." height=400px/><figcaption><i>Test results for the VHF antenna, now with s<sub>11</sub> plotted against antenna length. This plot was derived from the previous plot, simply by taking the intersections with the design frequency line. It clearly shows that the optimum length is around 20.25", very close to the theoretical optimum.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/UHF_AntennaTuning_TestResults.jpg" alt="A photo of a fabricated antenna." height=400px/><figcaption><i>Test results for the UHF antenna. Again, each colored line represents a different antenna length tested, from violet being to longest, 10", to red being the shortest, 6". The theoretical optimum length was 6.7". Again, the antenna displays two troughs in the s<sub>11</sub> measurement. However, neither of the troughs are anywhere close to the design frequency, indicating that the experiment is flawed.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/uhf42.jpg" alt="A photo of antennas integrated into an EM model panel." height=400px/><figcaption><i>As before, this plot shows s<sub>11</sub> plotted against antenna length for the UHF antenna. However, this data is of little use because the design frequency is so far from the troughs that the s<sub>11</sub> at 436.5 MHz is essentially independent from the antenna length.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p align="justify">Overall, our experiment produced mixed results. On one hand, the experiment for the VHF antenna was an unqualified success. We were able to verify the functionality of the antenna, and also found that the optimum length was very close to what was predicted by theory. On the other hand, no useful results were obtained for the UHF antenna. The reasons for this anomaly were not clear to us - we tried several further experiments to troubleshoot the problem, such as adjusting the interface board contact area and isolating the antenna, but none of them solved the issue. Possible reasons we did not explore are a poor antenna design and EM interference from lab equipment. More work is definitely needed to solve the UHF issue, as well as gather more data such as radiation patterns and s<sub>11</sub>'s in different satellite configurations, which will hopefully be taken up by future telecom teams.</p>
+									</div>
+								</section>
+                                
+						</div>
+                        
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li>
+											<span class="opener">Projects</span>
+											<ul>
+                                                <li><a href="aarest.html"><b>AAReST Cubesat</b></a></li>
+                                                <li><a href="powersupply.html">Bench Power Supply</a></li>
+												<li><a href="hthx.html">High Temperature Heat Exchanger</a></li>
+                                                <li><a href="robstacle.html">Robstacle Course</a></li>
+                                                
+											</ul>
+										</li>
+                                        <li>
+                                            <span class="opener">Internships</span>
+                                            <ul>
+                                                <li><a href="butterfly.html">Butterfly Wing Photonics</a></li>
+                                                <li><a href="twins.html">Magnesium Crystal Twins</a></li>
+                                                <li><a href="hiperco.html">Mechanical Properties of Hiperco</a></li>
+                                            </ul>
+                                        </li>
+										<li><a href="about.html">About Me</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h3>Contact</h3>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:edward.chu.1618@gmail.com">edward.chu.1618@gmail.com</a></li>
+										<li class="icon solid fa-phone">(626) 383-7537</li>
+									    <li class="icon solid fa-home">California, USA</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-angle-double-up">Back to Top</a></li>
+                                    </ul>
+									<p class="copyright"> Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.<br>Last updated February 25, 2021.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

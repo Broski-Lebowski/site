@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hiperco | Edward Chu</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>HOME</strong></a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/edward-chu-engineer/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin">
+										<span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+								        <h1>Mechanical Properties of Hiperco</h1>
+                                        <h2><i>Characterizing Hiperco's Mechanical Behavior through Experiment</i></h2>
+                                        <p align="justify">This internship occurred in the summer of 2019, at Sandia National Laboratories in Albuquerque, New Mexico.</p>
+                                        <p align="justify">Permendur is a metal alloy invented in 1929, made up of equal parts iron and cobalt, and is unique due to its exceptional magnetic properties - it is highly ferromagnetic, meaning that the material itself becomes a magnet when exposed to a magnetizing field. It is also magnetically soft with a low magnetic coercivity, and so is easily magnetized and demagnetized with said field. But most importantly, Permendur has the highest magnetic saturation flux density of any commercially available material, and when magnetized can generate a magnetic field of up to 2.4 Tesla. This makes it a prime candidate for use in the cores of specialty electric generators, motors, and transformers, especially when a lightweight yet high-performance material is required. It is used, for instance, in transformer rectifier units on aircraft, which benefit greatly from the reduced weight.</p>
+                                        <figure style="float:right;margin-left:20px">
+                                            <img src="images/fea_example.png" alt="Screenshot of an FEA result." width=600px/><figcaption><i>An example of a finite element simulation in the ANSYS software. The simulation concerns an I-beam undergoing torsion.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">Despite being invented nearly a century ago, however, there are still two major problems with Permendur that have not yet been solved. First, its mechanical behavior and properties leave much to be desired - although its tensile strength is high, it is extremely brittle and unpredictable, and tends to break with little deformation or warning. The alloy is sold under numerous trade variations that attempt to remedy this problem - sometimes with added trace elements like niobium or manganese, or with different manufacturing techniques. The formulation I worked with, Hiperco 50, adds two percent vanadium to increase ductility and workability. Nevertheless, these custom formulations, although they improve the situation somewhat, do not fix the problem.</p>
+                                        <p align="justify">The second problem with Permendur is that its mechanical behavior is still not well understood. This is largely because an accurate mathematical model for it does not yet exist. Mathematical models are a vital component of engineering, and have only increased in importance over time. Finite element simulation, the most prevalent simulation technique in modern engineering, uses such models to predict the behavior of solids and fluids. In these models are several equations called constitutive equations, some variables of which depend on intrinsic properties of the material. A finite element simulation of a steel structure, for example, would need the elastic modulus, Poisson's ratio, and other properties of steel to execute the simulation. In contrast, many of these variables have not been discovered yet for Hiperco/Permendur, and the only way to obtain these variables is through empirical data - i.e., experimentation. Obtaining this data was the focus of my research internship.</p>
+                                        <figure style="float:left;margin-right:20px;clear:right">
+                                            <img src="images/stress-strain_curve.png" alt="A stress-strain plot." width=500px/><figcaption><i>A stress-strain curve typical of a ductile metal like low-carbon steel. Image by <a href="https://commons.wikimedia.org/w/index.php?curid=89891144" target="_blank" rel="noopener noreferrer">Nicoguaro on Wikimedia Commons</a></i></figcaption>
+                                        </figure>
+                                        <figure style="float:left;margin-right:20px;clear:left">
+                                            <img src="images/dogbone.jpg" alt="A dog-bone dimension diagram." width=500px/><figcaption><i>A typical dog-bone geometry, standardized by ASTM. The D638 standard in particular is used for testing plastics.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">One common experiment for materials characterization is the classic tensile bar test. In it, a universal testing machine pulls on a "dog-bone specimen" of a material, with an ASTM-standardized geometry, until rupture. Then, by plotting the force applied versus the displacement, experimenters can extract a plot called stress-strain curve. The stress-strain curve is one of the most useful descriptors of material behavior in engineering - it shows the elastic modulus, yield strength, ultimate tensile strength, and other parameters. However, it alone is not nearly enough to solve the constitutive equations with. Rather than doing a multitude of different tests, varying strain rate, orientations, etc. to obtain material parameters one-by-one, we modified the classic dog-bone test to gather much more data per experiment. Instead of a dog-bone specimen, which only experiences one uniaxial state of stress, we used a "D"-shaped specimen. This shape is much more useful than the dog-bone since it covers much of the 2D stress space, meaning it experiences many of the possible different stress states simultaneously. One way to visualize this is to break up the geometry into two test regions - the straight bar region, and the curved region. The bar acts much like the uniaxial dog-bone test, but the curved section introduces many more complex, multiaxial states of stress, which is more similar to real-world scenarios.</p>
+                                        <p align="justify">Of course, this unique geometry is useless if we cannot measure the strain at each point on the specimen. For that purpose, we used digital image correlation, or DIC, to acquire full-field strain data. For DIC, the specimen to be tested is covered in a dense pattern of speckles beforehand. A camera then takes a video of the specimen during the test, which we  post-process by comparing each frame in the video to the first frame, the reference frame. By comparing the positions of the speckles between frames to track their movement, and thus the specimen's deformation, we can obtain strain fields for each frame of the video. The final result is essentially strain data that is complete over both space and time. Computational techniques that inversely calibrate model parameters from this full-field data can then be used to extract our needed parameters. Although many such techniques exist, our focus was on using the Virtual Fields Method, VFM, which uses the principle of virtual work to obtain the parameters. The details of this method are described in detail in <i>Parameter covariance and non-uniqueness in material model calibration using the Virtual Fields Method</i> by Jones et al. The specific parameters that were studied via VFM in this paper were the Young's modulus, Poisson's ratio, quasi-static yield stress, hardening variable, dynamic recovery, and rate-dependent coefficient and exponent.</p>
+                                        <p align="justify">Before my internship started, the five Hiperco samples we had were already machined into the "D"-shape via electrical discharge machining, EDM. However, there were several more steps that had to be taken before the experiment could begin. First, the EDM process left a thin layer of brass on all surfaces of the specimen. This layer had to be removed so as to not contaminate the furnace during future heat treatment. The brass removal was done through a combination of buffing wheels and manual sandpapering. Chemical etching was not an option, as Hiperco is sensitive to corrosion. The second step, as alluded to previously, was heat treatment. The heat treatment process is standard for many variations of Permendur to optimize its magnetic properties before use in devices. However, the process can affect the mechanical properties as well, so it was done to control for any possible effects. Lastly, the specimens were speckled for DIC, which was done with standard spray paint cans. The specimens were first completely coated with a white layer of paint, then sprayed briefly with black spray paint to produce a dense speckle pattern.</p>
+                                        <div class="container">
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/d_geometry.png" alt="D geometry schematic." height=380px/><figcaption><i>Schematic for the "D" geometry. The specimens we used were 1.5 mm thick. Jones et al.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/stress_states.png" alt="Plot showing stress states present in the D geometry." height=380px/><figcaption><i>Distribution of the plane stress states in the "D" geometry, normalized by von Mises stress. Red rings indicate constant shear while the color scale bar indicates the normalized and logged frequency of that stress state. Jones et al.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/test_setup.png" alt="Photo of the test setup, with elements numbered." height=380px/><figcaption><i>A photo of the test setup with numbered elements. 1 - Hydraulic universal testing machine. 2 - Hiperco specimen. 3 - 12.3-megapixel resolution camera. 4 - 4500 lbf capacity grips. 5 - LED arrays for lighting. 6 - 5000 lbf capacity load cell. 7 - White backdrop for camera.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <p align="justify">With the sample preparations complete, the experiments could begin. We set up a hydraulic universal testing machine, with grips and a load cell to measure force, and a camera and lighting for DIC. A computer running the MTS test software was used to control the universal testing machine, and the specimens were aligned in the grips using a square tool. Also, by connecting the software to the DIC camera, we were able to affix several virtual strain gages to the specimen, to observe strains at several points on the specimen during testing. Hiperco is sensitive to surface defects, so it was best not to use physical extensometers. For each test, the machine pulled on the samples at a constant rate of displacement until failure occurred, in a room temperature environment. After each of our five tests, I processed the DIC video data in a proprietary software called VIC-2D. This software converts the DIC video into full-field strain data for each video frame. As an example, only the results for the first specimen are discussed here in detail. Results for all the specimens are shown later, and summarized in a following table.</p>
+                                        <div class="container">
+                                            <div class="row">
+                                                <figure>
+                                                    <img src="images/sp_1.png" alt="Strain field superimposed on a specimen." height=480px/><figcaption><i>Image of specimen 1's strain field just prior to failure, obtained in the VIC 2D software. The calculated strain is the normal Lagrangian strain, in the direction of tension. Purple indicates zero strain, while red high strain.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/sp_1_max_strain.png" alt="Zoom in of previous image, with two points labelled 0.045 and 0.049." height=480px/><figcaption><i>Points of maximum strain on the straight and curved sections for the previous image. The maximum strains were about 4.5%.</i></figcaption>
+                                                </figure>
+                                                <figure>
+                                                    <img src="images/sp_1_rupture.png" alt="Photo of the specimen, broken on the straight and curved sections." height=480px/><figcaption><i>The fractured specimen. Notice the failure point of the straight section corresponds exactly with the point of maximum strain on that section.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <figure style="float:right;margin-left:20px">
+                                            <img src="images/luders.gif" alt="Video of Lüders band formation." height=400px/><figcaption><i>DIC video of Lüders band formation. This video is not from our own experiments.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">The leftmost image above shows the strain field of the specimen on the last video frame before failure. At this point, strain was uniformly high on the straight section, while on the curved section, most of the strain was concentrated in the middle left as expected. However, bands of high strain also appeared on the curved section; these bands only manifested in the last few moments of the test. The points of maximum strain, for the tensile straight section, occurred near its top, while for the curved section it occurred at the midpoint of its inner curve. Comparing these points to failure points, we can see that they correspond for the straight section, but not for the curved section. Note that all of this analysis would not have been possible without DIC's full-field strain data.</p>
+                                        <p align="justify">Furthermore, looking at the processed DIC video, it became apparent that a phenomenon called Lüders bands manifested on all of our test specimens. Lüders bands are bands of plastic deformation that propagate at a constant rate through certain metals, in response to applied tension. In our case, they formed only on the straight test section, much like in the example video to the right. To ascertain what we were witnessing were indeed Lüders bands, we noted the presence of several traits common in Lüders bands in our own case. Some of these were: a propagation angle of 50-55&#176;, the tendency of the propagation angle to reflect across the axis of propagation on occassion, and the mechanism of Lüders bands formation, dynamic strain aging, requiring the presence of at least two elements in the metal. The formation of Lüders bands is usually undesirable in industry, but they are a useful additional data point for our research. For example, although the band in example video begins at both ends of the specimen, the origin location for our Lüders bands varied between specimens. All of the points enumerated in this and the previous paragraph are listed as columns in the results table. Below, the corresponding three pictures as given for specimen 1 are given for each of the specimens, 2 through 5.</p>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/sp_2.png" alt="" height=300px width=280px/><figcaption><i>The second specimen.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_3.png" alt="" height=300px width=280px/><figcaption><i>The third specimen.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_4.png" alt="" height=300px width=280px/><figcaption><i>The fourth specimen.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_5.png" alt="" height=300px width=280px/><figcaption><i>The fifth specimen.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/sp_2_max_strain.png" alt="" height=300px width=220px/><figcaption><i>3.5% and 4.7% max strains.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_3_max_strain.png" alt="" height=300px width=220px/><figcaption><i>4.6% and 5.2% max strains.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_4_max_strain.png" alt="" height=300px width=220px/><figcaption><i>5.3% max strain.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_5_max_strain.png" alt="" height=300px width=220px/><figcaption><i>4.1% and 4.7% max strain.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="col">
+                                                    <figure>
+                                                        <img src="images/sp_2_rupture.png" alt="" height=300px width=220px/><figcaption><i>Unexpected failure location.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_3_rupture.png" alt="" height=300px width=220px/><figcaption><i>Matching failure locations.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_4_rupture.png" alt="" height=300px width=220px/><figcaption><i>Video stopped prematurely.</i></figcaption>
+                                                    </figure>
+                                                    <figure>
+                                                        <img src="images/sp_5_rupture.png" alt="" height=300px width=220px/><figcaption><i>Divergent failure location.</i></figcaption>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3>Table of Results</h3>
+                                        <div class="table-wrapper">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Specimen number</th>
+                                                        <th>Ultimate tensile strength, lbf</th>
+                                                        <th>Max &#949;<sub>yy</sub> on straight section</th>
+                                                        <th>Max &#949;<sub>yy</sub> on entire specimen</th>
+                                                        <th>Lüders band start point on straight section</th>
+                                                        <th>Point of max strain corresponds to failure location on straight section</th>
+                                                        <th>Number of diagonal strain bands on curved section</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>1</th>
+                                                        <th>1907</th>
+                                                        <th>4.5%</th>
+                                                        <th>4.9%</th>
+                                                        <th>Middle</th>
+                                                        <th>Yes</th>
+                                                        <th>2</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>2</th>
+                                                        <th>1731</th>
+                                                        <th>3.5%</th>
+                                                        <th>4.7%</th>
+                                                        <th>Top</th>
+                                                        <th>No</th>
+                                                        <th>1</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>3</th>
+                                                        <th>1483</th>
+                                                        <th>4.6%</th>
+                                                        <th>5.2%</th>
+                                                        <th>Top and Bottom</th>
+                                                        <th>Yes</th>
+                                                        <th>0</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>4</th>
+                                                        <th>1344</th>
+                                                        <th>5.4%</th>
+                                                        <th>5.4%</th>
+                                                        <th>Top</th>
+                                                        <th>Yes</th>
+                                                        <th>0</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>5</th>
+                                                        <th>1476</th>
+                                                        <th>4.1%</th>
+                                                        <th>4.7%</th>
+                                                        <th>Bottom</th>
+                                                        <th>No</th>
+                                                        <th>0</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Mean</th>
+                                                        <th>1588&plusmn;203</th>
+                                                        <th>4.4%&plusmn;0.6%</th>
+                                                        <th>5.0%&plusmn;0.3%</th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p align="justify">From the table, quantifiable results such as ultimate tensile strength and maximum strains were consistent, as the standard deviations were relatively small. However, the results obtained from DIC data were much more inconsistent, and speaks to the unpredictability of Hiperco. For example, the behavior of the Lüders bands, the location of failure, and the presence or absence of diagonal strain bands on the curved section, varied greatly depending on the specimen. Due to these differences, compounded with the fact that it is difficult to realize ideal boundary conditions in experimentation, the application of the Virtual Fields Method did not produce the desired results of accurate model parameters.</p>
+                                        <p align="justify">The inconsistency of Hiperco was on full display, especially when looking at the DIC results. There are several possible reasons for Hiperco's unpredictability. Most likely is an extreme sensitivity to small defects in the specimen. Although it is difficult to pinpoint when exactly defects may have been introduced, there are several possibilties. Defects may have been introduced before we even obtained the specimen, during the commercial manufacturing process. It is also likely that scratches were made on the sample surface during the manual polishing process. Furthermore, since Hiperco obeys the Hall-Petch relationship, which states that material strength is inversely correlated with grain size, and grain size can be affected by high temperatures, the EDM process used to machine the specimen into the "D" shape may have changed grain sizes in an indeterminate way. Another reason for unpredictable behavior may be imperceptible differences in the test setup, caused by human error. Poor specimen alignment, slight specimen slippage in the grips, and even a poor speckle pattern are all experimental defects that may have impacted our results. Therefore, it was difficult to reach any definitive conclusions with the data we gathered.</p>
+                                        <p align="justify">Despite all these issues, our experiments did yield some useful insight into Hiperco. We found that it is very possible to predict where failure on a sample of Hiperco will occur, if the full-field strain data is known. The failure location on the straight section corresponds exactly with the point of maximum strain on that section, for three out of our five tests. The fact that the max strain point that matches the failure point can be discerned macroscopically with DIC shows that Hiperco exhibits very little plasticity, which is expected for a brittle material. More experimentation, preferably with possible sources of defects in samples and test setups eliminated, though, is definitely needed if VFM-usable data is to be acquired, and an FEA material model to be calibrated for Hiperco.</p>
+                                        <p align="justify">I would like to thank organization 01851 of Sandia National Laboratories and the Center for Integrated Nanotechnologies for this opportunity.</p>
+									</div>
+								</section>
+						</div>
+                        
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li>
+											<span class="opener">Projects</span>
+											<ul>
+                                                <li><a href="aarest.html">AAReST Cubesat</a></li>
+                                                <li><a href="powersupply.html">Bench Power Supply</a></li>
+												<li><a href="hthx.html">High Temperature Heat Exchanger</a></li>
+                                                <li><a href="robstacle.html">Robstacle Course</a></li>
+                                                
+											</ul>
+										</li>
+                                        <li>
+                                            <span class="opener">Internships</span>
+                                            <ul>
+                                                <li><a href="butterfly.html">Butterfly Wing Photonics</a></li>
+                                                <li><a href="twins.html">Magnesium Crystal Twins</a></li>
+                                                <li><a href="hiperco.html"><b>Mechanical Properties of Hiperco</b></a></li>
+                                            </ul>
+                                        </li>
+										<li><a href="about.html">About Me</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h3>Contact</h3>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:edward.chu.1618@gmail.com">edward.chu.1618@gmail.com</a></li>
+										<li class="icon solid fa-phone">(626) 383-7537</li>
+                                        <li class="icon solid fa-home">California, USA</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-angle-double-up">Back to Top</a></li>
+                                    </ul>
+									<p class="copyright"> Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.<br>Last updated February 25, 2021.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

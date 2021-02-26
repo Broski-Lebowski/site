@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Heat Exchanger | Edward Chu</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>HOME</strong></a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/edward-chu-engineer/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin">
+										<span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+								        <h1>High Temperature Heat Exchanger</h1>
+                                        <h2><i>Designing and Simulating a Next Generation Heat Exchanger</i></h2>
+                                        <h3>Introduction</h3>
+                                        <p align="justify">This was a group project completed at UCLA.</p>
+                                        <figure style="float:right;margin-left:20px">
+                                            <img src="images/tube_in_shell_hx.png" alt="Cutaway diagram of a tube-in-shell heat exchanger."/><figcaption><i>A typical tube-in-shell heat exchanger, with a straight tube design providing one pass of heat exchange. This was the general design we used for our heat exchanger. Image by <a href="https://commons.wikimedia.org/wiki/File:Straight-tube_heat_exchanger_1-pass.PNG" target="_blank" rel="noopener noreferrer">H Padleckas on Wikimedia Commons.</a></i></figcaption>
+                                        </figure>
+                                        <p align="justify">A heat exchanger is a device that transfers thermal energy between two or more fluids, where one is relatively hotter than the others, without mixing the fluids themselves. They find use in a huge variety of common applications, including air-conditioning, refrigeration, internal combustion, heat sinks, natural gas processing, and more. In some instances, however, the operating fluids can reach extremely high temperatures, such that commonly used materials like aluminum and copper lose structural integrity. In these cases, the device is often referred to as a High Temperature Heat Exchanger, or HTHE/HTHX.</p>
+                                        <p align="justify">High Temperature Heat Exchangers continue to grow in importance, especially in power generation. By operating at higher and higher temperatures, the performance of the system is greatly improved, increasing efficiency and decreasing emissions. With an inlet temperature range of 750&deg;C to 1100&deg;C, the increased thermal capacity of HTHEs broaden their utility in industry, notably in gas turbine engine recuperation, hydrogen production, high temperature fuel cell systems, and nuclear power plants. To surmount the susceptibility of conventional metals to high temperatures and corrosive gases, they are usually constructed of advanced materials such as nickel-based alloys and ceramics. The continuous improvement of HTHEs promises to revolutionize the energy sector in the years and decades to come.</p>
+                                        <p align="justify">Due to the importance of HTHEs in both modern and future technologies, the ARPA-E division of the US Department of Energy has announced a design competition for such heat exchangers. The heat exchanger design must meet several requirements, and winners receive funding opportunities to implement their design. Specifically, the requirements are:</p>
+                                        <ul>
+                                            <li>Hot side inlet temperature: 1000&deg;C</li>
+                                            <li>Cold side inlet temperature: 300&deg;C</li>
+                                            <li>Hot side inlet pressure: 80 bar</li>
+                                            <li>Cold side inlet pressure: 250 bar</li>
+                                            <li>Hot side and cold side pressure drop: &#60;2%</li>
+                                            <li>Efficiency: &#62;80%</li>
+                                        </ul>
+                                        <p align="justify">The HTHE must also be able to operate at these conditions for an indefinite amount of time. Note that although we followed the ARPA-E requirements, we had no intention of actually entering the design competition.</p>
+                                        <h3>Design Process</h3>
+                                        <figure style="float:right;margin-left:20px;clear:both">
+                                            <img src="images/ashby_1.jpg" alt="Ashby chart." width=500px/><figcaption><i>Ashby chart of thermal conductivity and thermal expansion.</i></figcaption>
+                                        </figure>
+                                        <figure style="float:right;margin-left:20px;clear:both">
+                                            <img src="images/ashby_2.jpg" alt="Ashby chart." width=500px/><figcaption><i>Ashby chart of thermal diffusivity and thermal conductivity.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">Early on, we decided to go with a tube-in-shell model for our heat exchanger, specifically a one-pass straight-tube design. This HTHE design consists of many thin tubes that pass through the interior of a larger shell, with one fluid in the thin tubes the other fluid in the shell, to exchange thermal energy between the two. Having numerous tubes exposes more fluid to the coolant, increasing the surface area for heat exchange and efficiency. The downside of this model is that the tubes must be very thin and must be made of very heat-resistant materials in order to maintain structural integrity and a compact structure, as the working conditions are very harsh with high temperature and pressures. See the previous figure for a visual of the general design.</p>
+                                        <p align="justify">After this decision, the design process consisted of two major parts - materials selection and design parameter optimization. We decided to use high temperature metallic alloys as structural materials rather than ceramics, as they have on average higher thermal conductivities. Another positive characteristic is that metals possess the ability to deform plastically, and this gives them a stronger resistance to thermal shocks and brittle fractures. Metals are also able to be manufactured in a greater variety of methods; this does not influence the design but is advantageous if the design is to be approved and manufactured on a large scale, as the costs would be reduced. See the Ashby charts on the right comparing the properties of various materials.</p>
+                                        <p align="justify">Of course, there are various different metals to consider, even amongst those used in high temperature devices. From the Ashby charts, we saw that nickel superalloys, copper alloys, and tungsten appeared to be the best suited for our purposes (high thermal conductivity and diffisivity, and low thermal expansion). We consider each of these metals in turn.</p>
+                                        <p align="justify">Nickel superalloys have become increasingly popular in high-temperature applications, such as in engine turbines. This is in part due to their unique hardening property, where increases in temperature cause a phase precipitation in the alloy, actually increasing its strength at high temperatures by impeding dislocation movement. It goes without saying that most metals, in contrast, lose strength and become more ductile at higher temperatures. However, upon further inspection of the properties of the many varieties of Ni-superalloys, we found that they are still quite susceptible to creep, which weakens the material as it is subjected to prolonged mechanical stress and heat. Furthermore, Ni-superalloys have a rather low thermal conductivity, which can lead to avoidable inefficiencies in a heat exchanger. Thus, this family of alloys was ruled out in our design.</p>
+                                        <p align="justify">Next in our consideration was copper alloys. They are known for having extremely suitable thermal properties, and had the highest thermal conductivity and diffusivity amongst our considered materials. This would lead to high heat transfer efficiency and resistance to thermal shocks. The downsides, however, were that Cu-alloys have quite a low yield strength, especially at high temperatures (a mere 100 MPa at 800&deg;C!), and very low creep resistance. Unfortunately, this meant that they, too, could not be used in our HTHE design.</p>
+                                        <h4>Properties of Tungsten</h4>
+                                        <div class="table-wrapper">
+                                            <table style="width:50%"><caption style="caption-side:bottom;text-align:left;padding:10px;font-size:14px;color:black"><i>From </i>Ultra-High Temperature Materials<i> by Shabalin, I.L.</i></caption>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Melting Point</th>
+                                                        <th>3670&deg;C</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Thermal Conductivity</th>
+                                                        <th>175 W&sdot;m<sup>-1</sup>&sdot;K<sup>-1</sup></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Coefficient of Thermal Expansion</th>
+                                                        <th>4.3&sdot;10<sup>-6</sup> &#8211; 11&sdot;10<sup>-6</sup></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fracture Toughness</th>
+                                                        <th>8 &#8211; 40 MPa&sdot;m<sup>0.5</sup></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Young's Modulus</th>
+                                                        <th>300 &#8211; 400 GPa</th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p align="justify">Last up was tungsten. Amongst all the alloys and metals, it appeared to have the best mechanical properties, with a very high melting temperature, low coefficient of thermal expansion, and good creep resistance. Its thermal properties were also acceptable, as its thermal conductivity is comparable to some of the lower-end Cu alloys. However, by alloying tungsten with other metals it is possible to improve its thermal properties even more. It turns out that alloying tungsten with moderate amounts of copper can improve these thermal properties without too much impact on the mechanical properties. Looking at the table, we chose to use W85-Cu15. It has an improved thermal conductivity, and slightly higher thermal expansion. We estimate its melting point is around 3000&deg;C, less than pure tungsten's 3400&deg;C but still much higher than the operating temperature. It has an ultimate tensile strength of 460 MPa, and from that we estimate its yield strength to be 145 MPa.</p>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/tungsten_creep.jpg" alt="Graph of creep of tungsten wires at different temperatures." height=350px/><figcaption><i>Pure tungsten wires' time-to-rupture vs. rupture stress. 1: 649&deg;C, 2: 816&deg;C, 3: 982&deg;C, 4: 1093&deg;C, 5: 1260&deg;C, 6: 1371&deg;C, Top Right: 2527&deg;C.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/tungsten_copper.jpg" alt="Table of properties for different proportions of W-Cu alloy." height=350px/><figcaption><i>Table of properties for W-Cu alloys, with increasing proportion of copper used. Torrey Hills Technologies.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <p align="justify">The circulating fluid was chosen to be supercritical CO<sub>2</sub>, as it does not encounter any phase changes in the spectrum of temperatures in use. This avoids excess energy being spent on phase changes, giving greater efficiency. It also has a greater density and specific enthalpy compared to steam, allowing for the use of a smaller quantity of fluid to achieve the same performance. For coolant, we chose atmospheric air as it also remains in gaseous state, avoiding phase change, and is also low cost.</p>
+                                        <figure style="float:right;margin-left:20px;clear:both">
+                                            <img src="images/brayton.jpg" alt="Brayton cycle diagram." width=500px/><figcaption><i>Brayton cycle on pressure-volume and temperature-entropy graphs.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">To simulate the performance of the heat exchanger and the interaction between the two fluids, we modeled the system as a Brayton cycle. This cycle is used in many models of engineering processes, with the main examples being jet engines and electric turbines. The main difference between the Brayton cycle and the better-known Carnot cycle is that this cycle avoids isothermal processes, as they are much more time consuming to execute. An ideal Brayton cycle can be broken down into 4 processes:</p>
+                                        <ol>
+                                            <li>Isoentropic heating</li>
+                                            <li>Isobaric expansion</li>
+                                            <li>Isoentropic cooling</li>
+                                            <li>Isobaric compression</li>
+                                        </ol>
+                                        <p align="justify">There are two types of Brayton cycles, open and closed. The cycle is open if the working fluid enters and leaves the device, and is closed if the fluid recirculates in the system. The closed Brayton cycle is of interest to us, as it doesn’t emit any combustion products and therefore represents a clean process; it is mainly used in closed cycle gas turbines, high-temperature gas cooled reactors, and of course in heat exchanger devices. The theoretical equations of the Brayton cycle can be applied to the geometry of a tube-in-shell heat exchanger, the full calculations of which were executed with a MATLAB script. By inputting the ARPA-E operational parameters listed in the introduction, the geometry of the heat exchanger, and the properties of the materials chosen into the code, we can obtain the efficiency and the percentage pressure drop, which can then be used to evaluate the effectiveness of our design.</p>
+                                        <p align="justify">It is proven in literature that the effectiveness of a heat exchanger is inversely proportional to the entropy generation rate. Entropy generation has two components; the entropy generation due to heat transfer (which depends on the temperatures of the working and coolant fluids) and the fluid friction inside the heat exchanger (which depends on the pressures and temperatures of the fluids). Temperature and pressure, however, are fixed variables in this specific design, the geometry of the heat exchanger is the only variable that we can change in order to increase the efficiency of our Brayton cycle.</p>
+                                        <p align="justify">In order to design a heat exchanger in which heat transfer can take place efficiently, we need to maximize the area where the two fluids can transfer heat. First of all, to match the ARPA-E requirements the cold side inlet must pump air at a temperature of 300&deg;C and a pressure of 25 MPa whilst the hot side inlet must use 1000°C, 8 MPa supercritical CO<sub>2</sub>. In order to increase the effectiveness of the heat exchanger, our first modification was to start with a tube length of 6.5m, as the tube length is one of the main factors that affects the efficiency (as trials showed in MATLAB). The number of tubes was set to 60, the number of baffles was set to 20, and the spacing in between each baffle was set to 8 cm. The tubes’ outer and inner diameters are, respectively, 1.5 cm and 1.1 cm. The tube pitch was set to 2.5 cm, with a clearance of 1 cm. The tubes were organized with a triangular-pitch layout. The material was chosen to be W85-Cu15, as discussed in the previous section, and its thermal conductivity was entered into the code. To accommodate the number of tubes whilst keeping the design as compact as possible, the outer shell diameter was chosen to be 60 cm. To guarantee a greater effectiveness the velocity of the CO<sub>2</sub> at the inlet was reduced to 10 m/s, as a lower flow speed guarantees the fluid more time to exchange heat with the tube, enabling a greater heat exchange. Alongside this modification the radius of the CO2 inlet was also modified to 3.5 cm, reducing the flux of CO<sub>2</sub> that enters the tubes. Plugging in all the parameters, by running the code we obtained an efficiency of 0.8617, a percentage of pressure drop in the airflow of 1.48%, and in the flow of CO<sub>2</sub> of 0.14%. These values agree with the conditions set by ARPA-E, and therefore the design meets the specifications.</p>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/matlab_hthx1.jpg" alt="Screenshot of MATLAB code." height=350px/><figcaption><i>Two snippets of the MATLAB code we used to evaluate the performance of our heat exchanger design.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/matlab_hthx.jpg" alt="Screenshot of MATLAB code." height=350px/><figcaption><i></i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <p align="justify">The selected geometry is large and contains a high number of tubes. In order to run a finite element simulation, it would require a large number of tetrahedral elements to have accurate results; such a large amount would lead to a very slow simulation. To solve this problem, obtaining a quicker simulation that would still give accurate results, we created a scaled down model of the same heat exchanger. The model will have the same operating conditions with reduced dimensions; the changes made are listed below:</p>
+                                        <ul>
+                                            <li>Tube length: from 6.5 m to 0.54 m</li>
+                                            <li>Number of tubes: from 60 to 37</li>
+                                            <li>Shell diameter: from 0.6 m to 0.2 m</li>
+                                            <li>Number of baffles: from 20 to 4</li>
+                                            <li>Baffle spacing: from 0.08 m to 0.05 m</li>
+                                        </ul>
+                                        <p align="justify"> A 3D model of the heat exchanger was then made in Solidworks. Screenshots from the model can be seen in the following images. The model could then be imported as the geometry to be used for the finite element simulation.</p>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/solidworks_shell.jpg" alt="Solidworks screenshot." height=250px/><figcaption><i>Solidworks model of the heat exchanger's shell.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/solidworks_tubes.jpg" alt="Solidworks screenshot." height=250px/><figcaption><i>Solidworks model of the inner tubes.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/solidworks_transparent.jpg" alt="Solidworks screenshot." height=250px/><figcaption><i>Combined model of the shell and tubes, with transparency.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <h3>Finite Element Simulation</h3>
+                                        <p align="justify">With the material properties of the fluids and construction material known, and the 3D geometry modeled, it became possible to carry out a full, multiphysics finite element analysis (FEA) of the heat exchanger under working conditions. FEA is the most prevalent simulation technique in modern engineering, and has become indispensable to predict the behavior of systems before prototypes are even built. Although the modeled geometry is scaled down from our MATLAB geometric parameters, we used the same condition parameters, such as inlet velocities, temperatures, and pressures. All simulations were carried out in the COMSOL software.</p>
+                                        <p align="justify">Getting satisfactory results from the COMSOL simulation required several steps. First, after importing the heat exchanger geometry, many small changes had to be made in order to make the original Solidworks model more suitable for FEA. These changes included removing unnecessary details and small features, combining curves and surfaces, and other geometry edits. The entire heat exchanger was also split down the middle plane, as the device is symmetrical and simulating only half of it would save on computation time. The purpose of these changes was to minimize problems that would inevitably arise in the next step, meshing. This step splits the entire geometry into small elements, the conditions of which are each calculated in tandem to produce an overall result. It turns out that meshing is one of the most important steps in a finite element analysis, as the quality of the mesh is almost the sole determinant of not only the result quality but also the computation time. Being relatively new to FEA, it took a great amount of trial and error for us to produce a satisfactory mesh. After many failed attempts at simulation using poor meshes, accurate results could finally be obtained once the mesh was relatively free of problematic elements.</p>
+                                        <figure>
+                                            <img src="images/mesh.jpg" alt="Screenshot in COMSOL of the mesh."/><figcaption><i>The mesh we used, viewed in COMSOL.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">With a working mesh, there were a few more steps before actual simulation. Materials had to be assigned to each geometry domain - the alloy domain, the CO<sub>2</sub> domain, and the air domain. Input conditions were also given, such as inlet pressures and temperatures, and zero displacement conditions at the ends of the device. With these, a variety of results could be obtained from a single simulation - hence the multiphysics designation.</p>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/temperature_distribution.jpg" alt="Screenshot of COMSOL of temperature result." height=360px/><figcaption><i>The temperature distribution result. As expected, the fluids heat or cool significantly from inlet to outlet.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/velocity_distribution.jpg" alt="Screenshot of COMSOL of velocity result." height=360px/><figcaption><i>The velocity distribution of the fluids.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/vonmises_1.jpg" alt="Screenshot of COMSOL of stress result." height=325px/><figcaption><i>The stress distribution on the heat exchanger's insides.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/vonmises_2.jpg" alt="Screenshot of COMSOL of stress result." height=325px/><figcaption><i>The stress distribution on the outside shell. High stress appears to concentrate at the baffle-shell interface.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <p align="justify">The results seem plausible at a cursory analysis. The temperature of the coolant rises from inlet to outlet, and vice versa for the working fluid. The velocity of the working fluid also increases dramatically in the inner tubes, and lowers once exiting or before entering them. As for the stress, we calculated the maximum von Mises, or equivalent, stresses in each section of the heat exchanger, and compared them to the yield strength of the tungsten-copper alloy. We found that in all areas, a factor of safety of at least 1.5 was achieved, except for the baffle-shell interfaces, where the factor of safety was only slightly above 1. To increase safety and mechanical reliability, more baffles could be added to reduce the stress concentration.</p>
+                                        <p align="justify">The simulations for the heat exchanger were not ideal and could have been improved in a number of ways. Although only half of the model had to be simulated due to symmetry, simulations still took a long time to run and complete, so results are not as accurate as they could have been. Compounding to the problem were convergence issues and errors due to a coarse mesh. A balance between runtime and convergence had to be found, mostly by tuning meshing parameters. In the end though, the error on the simulations was less than 10<sup>-3</sup> for all variables simulated, indicating a fairly successful simulation.</p>
+									</div>
+								</section>
+						</div>
+                        
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li>
+											<span class="opener">Projects</span>
+											<ul>
+                                                <li><a href="aarest.html">AAReST Cubesat</a></li>
+                                                <li><a href="powersupply.html">Bench Power Supply</a></li>
+                                                <li><a href="hthx.html"><b>High Temperature Heat Exchanger</b></a></li>
+                                                <li><a href="robstacle.html">Robstacle Course</a></li>
+                                                
+											</ul>
+										</li>
+                                        <li>
+                                            <span class="opener">Internships</span>
+                                            <ul>
+                                                <li><a href="butterfly.html">Butterfly Wing Photonics</a></li>
+                                                <li><a href="twins.html">Magnesium Crystal Twins</a></li>
+                                                <li><a href="hiperco.html">Mechanical Properties of Hiperco</a></li>
+                                            </ul>
+                                        </li>
+										<li><a href="about.html">About Me</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h3>Contact</h3>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:edward.chu.1618@gmail.com">edward.chu.1618@gmail.com</a></li>
+										<li class="icon solid fa-phone">(626) 383-7537</li>
+                                        <li class="icon solid fa-home">California, USA</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-angle-double-up">Back to Top</a></li>
+                                    </ul>
+									<p class="copyright"> Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.<br>Last updated February 25, 2021.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

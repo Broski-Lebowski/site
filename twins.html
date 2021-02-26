@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Magnesium Twins | Edward Chu</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>HOME</strong></a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/edward-chu-engineer/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin">
+										<span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+								        <h1>Magnesium Crystal Twins</h1>
+                                        <h2><i>An Atomistic Simulation Study of Twin Migration in Magnesium</i></h2>
+                                        <h3>Introduction</h3>
+                                        <p align="justify">This was a Research Experience for Undergraduates completed at Drexel University, sponsored by the National Research Foundation.</p>
+                                        <p align="justify">Magnesium, element Mg, has often been called the metal of the future. It is easily recyclable, 33% lighter than aluminum while having similar or better mechanical properties, and is abundant in seawater and the Earth's crust. The adoption of this lightweight metal also has the potential to greatly benefit the environment by increasing the fuel economy of vehicles. These properties make Mg and its alloys prime candidates for structural applications in the automotive and aerospace industries. However, magnesium has a few disadvantages that prevent it from overtaking aluminum as the default lightweight metal, including the fact that it has poor formability and ductility at room temperature, and is prone to fracture and failure.</p>
+                                        <p align="justify">Magnesium is somewhat unique amongst metals due to its hexagonal close-packed (hcp) crystal structure, which is conducive for the formation of a certain microscopic defect, called twin boundaries. In the crystal structure, twin boundaries are surfaces at which the lattice forms a highly symmetrical structure (often a mirror image) across the boundary surface, resulting in two crystals sharing some of the same lattice points and atoms. It is essential to understand the underlying mechanism of twins to improve the manufacturing process and properties of magnesium alloys, as it is through twin formation that hcp metals deform plastically at room temperature. However, twin behavior is still not well understood. The purpose of this research was to alleviate some of this knowledge deficit.</p>
+                                        <p align="justify">This study in particular concerned the movement, or migration, of twins through magnesium after formation. When strain is applied to samples of magnesium containing twins, the twin boundary tends to propagate through the sample, one atom at a time. To study this, we used a simulation program called LAMMPS (Large - scale Atomic / Molecular Massively Parallel Simulator), a software developed by Sandia National Laboratories. LAAMPS was run on a computing cluster to model the behavior of twins under various conditions, with each simulation taking about one day to complete. The raw data dumps were then analyzed using several MATLAB scripts for interpretation of the results.</p>
+                                        <div class="row">
+                                            <div class="col" style="padding-right:5px;padding-left:5px;">
+                                                <figure>
+                                                    <img src="images/ovito_1.jpg" alt="Screenshot from the OVITO software." height=120px/><figcaption><i>A twin defect before migration.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="col" style="padding-right:5px;;padding-left:5px;">
+                                                <figure>
+                                                    <img src="images/ovito_2.jpg" alt="Screenshot from the OVITO software." height=120px/><figcaption><i>The same twin defect during migration.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="col" style="padding-right:5px;;padding-left:5px;">
+                                                <figure>
+                                                    <img src="images/ovito_3.jpg" alt="Screenshot from the OVITO software." height=120px/><figcaption><i>The twin defect after migration.</i></figcaption>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <p align="justify">OVITO, Open Visualization Tool, is a commonly used software for atomistic and particulate simulations that lets scientists visualize their simulations, representing each atom as a sphere. The three screenshots above were produced using OVITO, and give an idea of what a twin migration event looks like in the simulation.</p>
+                                        <figure>
+                                            <img src="images/twin_position_1.jpg" alt="Two graphs vs. time, one like a step function and the other like a sawtooth." height=600px/><figcaption><i>Two plots, one showing twin position vs. time and the other shear stress vs. time for the same simulation.</i></figcaption>
+                                        </figure>
+                                        <figure>
+                                            <img src="images/twin_position_2.jpg" alt="" height=560px/><figcaption><i>The same plot, but the twin position is smoothed using the mode, and the shear stress is smoothed with a rolling average.</i></figcaption>
+                                        </figure>
+                                        <p align="justify">The above two images are a representative result from the dozens of simulations that were conducted. It seems that each twin migration event corresponds with a drop in the shear stress, a reasonable occurrence. Also, the time between simulation start and the first twin migration event was longer than the intervals between subsequent migrations. The data for these first events are shown below. </p>
+                                        <div class="row">
+                                            <figure>
+                                                <img src="images/twin_firstevent.jpg" alt="A graph with four different curves for different temperatures." height=380px/><figcaption><i>A graph showing first migration event time vs. strain rate. Clearly, the time is highly dependent on the strain rate, but temperature also has an influence, lowering the time at higher temperatures.</i></figcaption>
+                                            </figure>
+                                            <figure>
+                                                <img src="images/twin_velocity.jpg" alt="A graph with four different curves for different temperatures." height=380px/><figcaption><i>A graph showing average twin velocity vs. strain rate. Strain rate seems to be directly proportional to twin velocity, while temperature's effects are only noticeable at high strain rates.</i></figcaption>
+                                            </figure>
+                                        </div>
+                                        <p align="justify">Several trends are visible in the plots. The overall velocity of the twin migration appears to be directly proportional to the strain rate, as expected. Surprisingly, it does not seem to have any correlation with temperature. The time of each first migration event appears to be inversely correlated with the strain rate.</p>
+                                        <p align="justify">Further research would be conducive to better understanding the exact mechanism of twin movement. I would like to thank NSF REU and Drexel University for this opportunity.</p>
+									</div>
+								</section>
+						</div>
+                        
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li>
+											<span class="opener">Projects</span>
+											<ul>
+                                                <li><a href="aarest.html">AAReST Cubesat</a></li>
+                                                <li><a href="powersupply.html">Bench Power Supply</a></li>
+												<li><a href="hthx.html">High Temperature Heat Exchanger</a></li>
+                                                <li><a href="robstacle.html">Robstacle Course</a></li>
+                                                
+											</ul>
+										</li>
+                                        <li>
+                                            <span class="opener">Internships</span>
+                                            <ul>
+                                                <li><a href="butterfly.html">Butterfly Wing Photonics</a></li>
+                                                <li><a href="twins.html"><b>Magnesium Crystal Twins</b></a></li>
+                                                <li><a href="hiperco.html">Mechanical Properties of Hiperco</a></li>
+                                            </ul>
+                                        </li>
+										<li><a href="about.html">About Me</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h3>Contact</h3>
+									</header>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:edward.chu.1618@gmail.com">edward.chu.1618@gmail.com</a></li>
+										<li class="icon solid fa-phone">(626) 383-7537</li>
+                                        <li class="icon solid fa-home">California, USA</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="#" class="button icon solid fa-angle-double-up">Back to Top</a></li>
+                                    </ul>
+									<p class="copyright">Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.<br>Last updated February 25, 2021.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
